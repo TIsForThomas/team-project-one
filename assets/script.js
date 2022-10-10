@@ -61,7 +61,8 @@ var events = {
 };
 var eName;
 
-fetch(seatGeekAPI)
+function getEvents() {
+  fetch(seatGeekAPI)
     .then(function (response) {
         console.log(response);
         return response.json();
@@ -81,3 +82,4 @@ fetch(seatGeekAPI)
             //   console.log(events);
         }
     })
+  }
