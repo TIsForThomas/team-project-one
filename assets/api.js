@@ -18,12 +18,12 @@ fetch(seatGeekAPI)
     
   })
   .then(function(){
-    // for (let i = 0; i < seatGeekData.length; i++) {
-    //   eName = i;
-    //   events.eName = seatGeekData[i].venue.location; // this works for getting one key and one item
+    for (let i = 0; i < seatGeekData.length; i++) {
+      eName = i;
+      events.eName = seatGeekData[i].venue.location; // this works for getting one key and one item
     //   events.eName.type = seatGeekData[i].type;
     //   console.log(events);
-    // }
+    }
   })
 
   // for (let i =0; i < seatGeekData.length; i++) {
