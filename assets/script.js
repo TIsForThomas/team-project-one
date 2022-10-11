@@ -66,21 +66,21 @@ var events = {
 
 };
 
-function getEvents(userInput) {
+function getEvents(input) {
     // get user input from variable
-    var userInput = 'austin'
-    var seatGeekCityAPI = 'https://api.seatgeek.com/2/events?venue.city='+ userInput + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
+    // var input = 'austin'
+    var seatGeekCityAPI = 'https://api.seatgeek.com/2/events?venue.city='+ input + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
 
 
   fetch(seatGeekCityAPI)
     .then(function (response) {
-        console.log(response);
+        // console.log(response);
         return response.json();
     })
     .then(function (data) {
 
-        seatGeekData = data;
-        console.log(seatGeekData)
+        seatGeekData = data.events;
+        // console.log(seatGeekData)
         return seatGeekData;
 
     })
@@ -95,17 +95,12 @@ function getEvents(userInput) {
             events.performers.push(seatGeekData[i].title);
             events.highPrice.push(seatGeekData[i].stats.highest_price);
             events.lowPrice.push(seatGeekData[i].stats.lowest_price);
-            console.log(events);
-
-            // eName = i;
-            // events[eName] = seatGeekData[i].venue.location; 
-            // console.log(events)
-            // events.eName[type] = seatGeek;
             // console.log(events);
         }
+        console.log(events);
     })
   }
-getEvents();
+// getEvents();
 
   function displayEvents() {
     
