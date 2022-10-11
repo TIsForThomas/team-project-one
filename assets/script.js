@@ -3,12 +3,15 @@ var musicFilter = document.querySelector('#music-btn');
 var sportsFilter = document.querySelector('#sports-btn');
 var theaterFilter = document.querySelector('#theater-btn');
 
+var centerLat = 30.266;
+var centerLong = -97.7333;
+
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidGhvbWFzaXNtZTEiLCJhIjoiY2w5MDQxcnk1MHd3OTNvcXY5cDVhN3J3ZyJ9.mf0LftJWuD2HkgIlKhwzaw';
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/light-v10', // style URL
-    center: [-97.7333, 30.266], // starting position [lng, lat]
+    center: [centerLong, centerLat], // starting position [lng, lat]
     zoom: 10, // starting zoom
     projection: 'globe' // display the map as a 3D globe
 });
@@ -100,31 +103,35 @@ function getEvents(input) {
         console.log(events);
     })
   }
-// getEvents();
 
-  function displayEvents() {
+function displayEvents() {
     
     // add markers per event
-    for (let i = 0; i < events.venue; i++) {
+    for (let i = 0; i < events.venue.length; i++) {
+
+        let lat = events.lat[i];
+        let long = events.long[i];
+
+        console.log(lat);
+        console.log(long);
         // create a HTML element for each feature
         const el = document.createElement('div');
         el.className = 'marker';
-    
         // make a marker for each feature and add to the map
-        new mapboxgl.Marker(el)
-            .setLngLat(events.lat[i], events.long[i])
-            .setPopup(
+        new mapboxgl.Marker(el).setLngLat([long, lat]).setPopup(
                 new mapboxgl.Popup({ offset: 25 }) // add popups
-                  .setHTML(
-                    `<p>${events.type[i]}</p>
+                    .setHTML(
+                    `<p>${events.eventType[i]}</p>
                     <h3>${events.venue[i]}</h3>
                     <p>${events.address[i]}</p>
                     <p>${events.performers[i]}</p>
-                    <p>$${events.lowPrice} - $${events.highPrice}</p>
-                    <a href='${events.url[i]}</a>`
-                  )
-              ).addTo(map);
+                    <p>$${events.lowPrice[i]} - $${events.highPrice[i]}</p>
+                    <a href='${events.website[i]}</a>`
+                    )
+                ).addTo(map);
     }
+
+    // document.querySelector('#map').style.display = 'auto';
 }
 
 searchBar.addEventListener('keyup', function(event) {
