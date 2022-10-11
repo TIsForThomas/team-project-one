@@ -7,24 +7,30 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="assets/materialize/css/materialize.css">
     <link rel="stylesheet" href="./assets/mapbox-style-modify.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body class="#01579b light-blue darken-4">
     <div class="container #01579b light-blue darken-4">
         <div class="row" style="margin-top: 25px;">
-            <div class="col s2"></div>
-            <input type="text" placeholder="Ex: Austin, TX" class="col s6 grey search">
-            <div class="col s3">
-                <a class="waves-effect waves-light btn  modal-trigger" href="#modal1" onclick="toggleModal();">Modal</a>
+            <div class="col s12">
+                <div class="col s1"></div>
+                <div class="input-field row col s9">
+                    <input id="location_inline" type="email" class="validate">
+                    <label for="location_inline">Location</label>
+                    <span class="helper-text" data-error="wrong" data-success="right">Ex: Austin, TX</span>
+                </div>
+                <a class="col s1 waves-effect waves-light btn  modal-trigger" href="#modal1"><i class="material-icons center">cloud</i></a>
             </div>
         </div>
         <div class="row valign-wrapper">
             <div class="col s1"></div>
-            <a class="col s3 btn-large red" style="font-size: 30px;"><b>Music</b></a>
+            <a id="music-button" class="col s3 btn-large red waves-effect" style="font-size: 30px;"><b>Music</b></a>
             <div class="col s1"></div>
-            <a class="col s3 btn-large green" style="font-size: 30px;"><b>Sports</b></a>
+            <a id="sports-button" class="col s3 btn-large green waves-effect" style="font-size: 30px;"><b>Sports</b></a>
             <div class="col s1"></div>
-            <a class="col s3 btn-large blue" style="font-size: 30px;"><b>Theatre</b></a>
+            <a id="theater-button" class="col s3 btn-large blue waves-effect" style="font-size: 30px;"><b>Theater</b></a>
             <div class="col s1"></div>
         </div>
         <div id='map' style='width: 100%; height: 700px;' class="col s6 offset-s6"></div>
