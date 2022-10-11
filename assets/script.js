@@ -50,8 +50,18 @@ map.on('style.load', () => {
 
 
 var seatGeekAPI = 'https://api.seatgeek.com/2/events?&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc';
+var seatGeekCityAPI = 'https://api.seatgeek.com/2/venues?city=austin&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
 var seatGeekData;
 var events = {
+
+    venue: [],
+    lat: [],
+    long: [],
+    address: [],
+    url: [],
+    type: [],
+    performers: [],
+
 };
 var eName;
 
@@ -68,14 +78,15 @@ function getEvents() {
         return seatGeekData;
 
     })
-    .then(function () {
-        for (let i = 0; i < seatGeekData.length; i++) {
-            eName = i;
-            events.eName = seatGeekData[i].venue.location; // this works for getting one key and one item
-            //   events.eName.type = seatGeekData[i].type;
-            //   console.log(events);
-        }
-    })
+    // .then(function () {
+        // for (let i = 0; i < seatGeekData.length; i++) {
+        //     eName = i;
+        //     events[eName] = seatGeekData[i].venue.location; 
+        //     console.log(events)
+        //     events.eName[type] = seatGeek;
+        //     console.log(events);
+        // }
+    // })
   }
 
 
@@ -102,3 +113,4 @@ function getEvents() {
               ).addTo(map);
     }
 }
+
