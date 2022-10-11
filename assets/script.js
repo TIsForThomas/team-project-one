@@ -2,7 +2,7 @@ var searchBar = document.querySelector('#location_inline');
 var musicFilter = document.querySelector('#music-btn');
 var sportsFilter = document.querySelector('#sports-btn');
 var theaterFilter = document.querySelector('#theater-btn');
-
+M.AutoInit();
 var centerLat = 30.266;
 var centerLong = -97.7333;
 
