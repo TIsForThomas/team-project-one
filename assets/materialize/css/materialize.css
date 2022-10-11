@@ -2584,7 +2584,7 @@ html {
 }
 
 *, *:before, *:after {
-  -webkit-box-sizing: inherit;
+  -webkit-box-sizing: inherit; */
           box-sizing: inherit;
 }
 

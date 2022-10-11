@@ -131,7 +131,9 @@ function displayEvents() {
                 ).addTo(map);
     }
 
-    // document.querySelector('#map').style.display = 'auto';
+    // document.querySelector('#map').style.display = 'flex';
+    // // document.querySelector('#map').style.width = '100%';
+    // // document.querySelector('#map').style.height = '700px';
 }
 
 searchBar.addEventListener('keyup', function(event) {
