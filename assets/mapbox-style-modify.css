@@ -28,3 +28,46 @@
 .mapboxgl-popup-close-button {
     border: none;
 }
+
+ /* label color */
+ .input-field label, #helper {
+    color: rgba(77, 71, 71, 0.884);
+ }
+
+
+ #body {
+  background-image: url(./images/yvette-de-wit-NYrVisodQ2M-unsplash.jpg);
+ }
+
+ #map {
+  display: none;
+  border: 2px solid rgba(247, 247, 247, 0.6);
+  border-radius: 5px;
+ }
+
+ #help {
+  font-size: 20px;
+  color: rgba(77, 71, 71, 0.884);
+  border-radius: 30px;
+  width: 38px;
+  padding: 0px;
+  /* margin-top: 25px; */
+ }
+ #search-bar {
+  display: flex;
+  align-items: center;
+ }
+ #search-1 {
+  background-color: rgba(247, 247, 247, 0.6);
+  padding-bottom: 10px;
+  border-radius: 20px;
+ }
+ #help {
+  background-color: rgba(247, 247, 247, 0.6);
+ }
+
+ #sports-button, #music-button, #theater-button {
+  border: 2px solid rgba(247, 247, 247, 0.6);
+  border-radius: 5px;
+  margin: 5px;
+ }
