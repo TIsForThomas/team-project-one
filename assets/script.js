@@ -49,8 +49,8 @@ map.on('style.load', () => {
 
 
 
-var seatGeekAPI = 'https://api.seatgeek.com/2/events?&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc';
-var seatGeekCityAPI = 'https://api.seatgeek.com/2/venues?city=austin&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
+// var seatGeekAPI = 'https://api.seatgeek.com/2/events?&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc';
+
 var seatGeekData;
 var events = {
 
@@ -58,15 +58,21 @@ var events = {
     lat: [],
     long: [],
     address: [],
-    url: [],
-    type: [],
+    website: [],
+    eventType: [],
     performers: [],
+    lowPrice: [],
+    highPrice: [],
 
 };
-var eName;
 
-function getEvents() {
-  fetch(seatGeekAPI)
+function getEvents(userInput) {
+    // get user input from variable
+    var userInput = 'austin'
+    var seatGeekCityAPI = 'https://api.seatgeek.com/2/events?venue.city='+ userInput + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
+
+
+  fetch(seatGeekCityAPI)
     .then(function (response) {
         console.log(response);
         return response.json();
@@ -78,17 +84,28 @@ function getEvents() {
         return seatGeekData;
 
     })
-    // .then(function () {
-        // for (let i = 0; i < seatGeekData.length; i++) {
-        //     eName = i;
-        //     events[eName] = seatGeekData[i].venue.location; 
-        //     console.log(events)
-        //     events.eName[type] = seatGeek;
-        //     console.log(events);
-        // }
-    // })
-  }
+    .then(function (){
+        for (let i = 0; i < seatGeekData.length; i++) {
+            events.venue.push(seatGeekData[i].venue.name);
+            events.lat.push(seatGeekData[i].venue.location.lat);
+            events.long.push(seatGeekData[i].venue.location.lon);
+            events.address.push(seatGeekData[i].venue.address);
+            events.website.push(seatGeekData[i].url);
+            events.eventType.push(seatGeekData[i].type);
+            events.performers.push(seatGeekData[i].title);
+            events.highPrice.push(seatGeekData[i].stats.highest_price);
+            events.lowPrice.push(seatGeekData[i].stats.lowest_price);
+            console.log(events);
 
+            // eName = i;
+            // events[eName] = seatGeekData[i].venue.location; 
+            // console.log(events)
+            // events.eName[type] = seatGeek;
+            // console.log(events);
+        }
+    })
+  }
+getEvents();
 
   function displayEvents() {
     
