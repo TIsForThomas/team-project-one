@@ -126,7 +126,7 @@ function displayEvents() {
                     <p>${events.address[i]}</p>
                     <p>${events.performers[i]}</p>
                     <p>$${events.lowPrice[i]} - $${events.highPrice[i]}</p>
-                    <a href='${events.website[i]}</a>`
+                    <a href='${events.website[i]}' target='_blank'>SeatGeek link</a>`
                     )
                 ).addTo(map);
     }
