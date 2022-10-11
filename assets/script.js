@@ -72,7 +72,15 @@ var events = {
 function getEvents(input) {
     // get user input from variable
     // var input = 'austin'
-    var seatGeekCityAPI = 'https://api.seatgeek.com/2/events?venue.city='+ input + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
+    var currentDate = '';
+    var currentVar = new Date();
+    currentDate = currentDate.concat(currentVar.getUTCFullYear());
+    currentDate = currentDate.concat('-' + currentVar.getUTCMonth());
+    currentDate = currentDate.concat('-' + currentVar.getUTCDay());
+    
+    // console.log(currentDate);
+
+    var seatGeekCityAPI = 'https://api.seatgeek.com/2/events?datetime_utc.gt=' + currentDate + '&venue.city='+ input + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
 
 
   fetch(seatGeekCityAPI)
@@ -83,7 +91,7 @@ function getEvents(input) {
     .then(function (data) {
 
         seatGeekData = data.events;
-        // console.log(seatGeekData)
+        // console.log(seatGeekData);
         return seatGeekData;
 
     })
