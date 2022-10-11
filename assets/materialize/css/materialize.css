@@ -6244,7 +6244,9 @@ input[type=number]:not(.browser-default):focus:not([readonly]) + label,
 input[type=search]:not(.browser-default):focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label {
   color:0096C7;
+  opacity: 0;
 }
+
 
 input:not([type]):focus.valid ~ label,
 input[type=text]:not(.browser-default):focus.valid ~ label,
@@ -6260,6 +6262,7 @@ input[type=number]:not(.browser-default):focus.valid ~ label,
 input[type=search]:not(.browser-default):focus.valid ~ label,
 textarea.materialize-textarea:focus.valid ~ label {
   color: #4CAF50;
+  opacity: 0;
 }
 
 input:not([type]):focus.invalid ~ label,
