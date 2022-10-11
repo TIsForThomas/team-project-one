@@ -1,4 +1,4 @@
-var searchBar = document.querySelector('#location-inline');
+var searchBar = document.querySelector('#location_inline');
 var musicFilter = document.querySelector('#music-btn');
 var sportsFilter = document.querySelector('#sports-btn');
 var theaterFilter = document.querySelector('#theater-btn');
@@ -79,7 +79,7 @@ function getEvents(userInput) {
     })
     .then(function (data) {
 
-        seatGeekData = data.events;
+        seatGeekData = data;
         console.log(seatGeekData)
         return seatGeekData;
 
@@ -125,9 +125,21 @@ getEvents();
                     <h3>${events.venue[i]}</h3>
                     <p>${events.address[i]}</p>
                     <p>${events.performers[i]}</p>
+                    <p>$${events.lowPrice} - $${events.highPrice}</p>
                     <a href='${events.url[i]}</a>`
                   )
               ).addTo(map);
     }
 }
 
+searchBar.addEventListener('keyup', function(event) {
+    
+    if (event.key !== 'Enter') {
+       return;
+    }
+
+    console.log(event);
+    let userInput = document.querySelector('#location_inline').value;
+
+    getEvents(userInput);
+})
