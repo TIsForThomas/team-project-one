@@ -91,7 +91,7 @@ function getEvents(input) {
     .then(function (data) {
 
         seatGeekData = data.events;
-        // console.log(seatGeekData);
+        console.log(seatGeekData);
         return seatGeekData;
 
     })
@@ -104,8 +104,14 @@ function getEvents(input) {
             events.website.push(seatGeekData[i].url);
             events.eventType.push(seatGeekData[i].type);
             events.performers.push(seatGeekData[i].title);
-            events.highPrice.push(seatGeekData[i].stats.highest_price);
-            events.lowPrice.push(seatGeekData[i].stats.lowest_price);
+            if (seatGeekData[i].stats.highest_price == null){
+                events.highPrice.push('SOLD OUT!');
+                events.lowPrice.push('SOLD OUT');
+            }
+            else {
+                events.highPrice.push(seatGeekData[i].stats.highest_price);
+                events.lowPrice.push(seatGeekData[i].stats.lowest_price);
+            }
             // console.log(events);
         }
         console.log(events);
@@ -143,6 +149,12 @@ function displayEvents() {
     // // document.querySelector('#map').style.width = '100%';
     // // document.querySelector('#map').style.height = '700px';
 }
+function filterResults(){
+
+}
+
+
+
 
 searchBar.addEventListener('keyup', function(event) {
     
