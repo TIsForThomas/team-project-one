@@ -1,7 +1,7 @@
 var searchBar = document.querySelector('#location_inline');
-var musicFilter = document.querySelector('#music-btn');
-var sportsFilter = document.querySelector('#sports-btn');
-var theaterFilter = document.querySelector('#theater-btn');
+var musicFilter = document.querySelector('#music-button');
+var sportsFilter = document.querySelector('#sports-button');
+var theaterFilter = document.querySelector('#theater-button');
 M.AutoInit();
 
 var seatGeekData;
@@ -116,7 +116,7 @@ function displayEvents() {
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/light-v10', // style URL
         center: [centerLong, centerLat], // starting position [lng, lat]
-        zoom: 10, // starting zoom
+        zoom: 12, // starting zoom
         projection: 'globe' // display the map as a 3D globe
     });
     map.on('style.load', () => {
@@ -139,7 +139,7 @@ function displayEvents() {
                 new mapboxgl.Popup({ offset: 25 }) // add popups
                     .setHTML(
                     `<h1 id='event-venue'>${events.venue[i]}</h1>
-                    <h3 id='event-date>${events.date}</h3>
+                    <h3 id='event-date>${events.date[i]}</h3>
                     <p id='event-address'>${events.address[i]}</p>
                     <p id='event-performer'>${events.performers[i]}</p>
                     <p id='event-price-range'>$${events.lowPrice[i]} - $${events.highPrice[i]}</p>
@@ -147,8 +147,6 @@ function displayEvents() {
                 )
         ).addTo(map);
     }
-    // // document.querySelector('#map').style.width = '100%';
-    // // document.querySelector('#map').style.height = '700px';
 }
 
 // function to filter events by theater, music, and sports after receiving results from seatgeek
@@ -160,8 +158,7 @@ function filterResults(buttonClicked){
         if(buttonClicked == events.eventType[i]){
             // display event
 
-        }
-        else {
+        } else {
             // hide event
 
         }
@@ -182,4 +179,16 @@ searchBar.addEventListener('keyup', function (event) {
     let userInput = document.querySelector('#location_inline').value;
 
     getEvents(userInput);
+})
+
+musicFilter.addEventListener('click', function () {
+    
+})
+
+sportsFilter.addEventListener('click', function () {
+
+})
+
+theaterFilter.addEventListener('click', function () {
+
 })
