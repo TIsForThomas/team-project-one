@@ -1,7 +1,7 @@
 var searchBar = document.querySelector('#location_inline');
-var musicFilter = document.querySelector('#music-btn');
-var sportsFilter = document.querySelector('#sports-btn');
-var theaterFilter = document.querySelector('#theater-btn');
+var musicFilter = document.querySelector('#music-button');
+var sportsFilter = document.querySelector('#sports-button');
+var theaterFilter = document.querySelector('#theater-button');
 M.AutoInit();
 
 var seatGeekData;
@@ -116,7 +116,7 @@ function displayEvents() {
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/light-v10', // style URL
         center: [centerLong, centerLat], // starting position [lng, lat]
-        zoom: 10, // starting zoom
+        zoom: 12, // starting zoom
         projection: 'globe' // display the map as a 3D globe
     });
     map.on('style.load', () => {
@@ -128,11 +128,11 @@ function displayEvents() {
 
         let lat = events.lat[i];
         let long = events.long[i];
-
-        // console.log(lat);
-        // console.log(long);
+        
         // create a HTML element for each feature
         const el = document.createElement('div');
+
+        el.setAttribute('id', events.eventType[i])
         el.className = 'marker';
         // make a marker for each feature and add to the map
         new mapboxgl.Marker(el).setLngLat([long, lat]).setPopup(
@@ -148,8 +148,6 @@ function displayEvents() {
                 )
         ).addTo(map);
     }
-    // // document.querySelector('#map').style.width = '100%';
-    // // document.querySelector('#map').style.height = '700px';
 }
 
 // function to filter events by theater, music, and sports after receiving results from seatgeek
@@ -160,12 +158,11 @@ function filterResults(buttonClicked){
     for(let i = 0; i < events.eventType.length; i++){
         if(buttonClicked == events.eventType[i]){
             // display event
-
-        }
-        else {
+            console.log(events.eventType[i])
+        } else {
             // hide event
-
-        }
+            console.log('filtered out ' + events.eventType[i] );
+        }   
     }
 
 }
@@ -184,3 +181,22 @@ searchBar.addEventListener('keyup', function (event) {
 
     getEvents(userInput);
 })
+
+theaterFilter.addEventListener('click', function () {
+    console.log('ding');
+    var filterTheater = 'theater';
+    filterResults(filterTheater);
+})
+
+sportsFilter.addEventListener('click', function () {
+    console.log('dong');
+    var filterSports = 'sports';
+    filterResults(filterSports);
+})
+
+musicFilter.addEventListener('click', function () {
+    console.log('The queen is gone!')
+    var filterMusic = 'concert';
+    filterResults(filterMusic);
+})
+
