@@ -128,11 +128,11 @@ function displayEvents() {
 
         let lat = events.lat[i];
         let long = events.long[i];
-
-        // console.log(lat);
-        // console.log(long);
+        
         // create a HTML element for each feature
         const el = document.createElement('div');
+
+        el.setAttribute('id', events.eventType[i])
         el.className = 'marker';
         // make a marker for each feature and add to the map
         new mapboxgl.Marker(el).setLngLat([long, lat]).setPopup(
@@ -181,17 +181,21 @@ searchBar.addEventListener('keyup', function (event) {
     getEvents(userInput);
 })
 
-musicFilter.addEventListener('click', function () {
-    var filterMusic = 'concert';
-    filterResults(filterMusic);
+theaterFilter.addEventListener('click', function () {
+    console.log('ding');
+    var filterTheater = 'theater';
+    filterResults(filterTheater);
 })
 
 sportsFilter.addEventListener('click', function () {
+    console.log('dong');
     var filterSports = 'sports';
     filterResults(filterSports);
 })
 
-theaterFilter.addEventListener('click', function () {
-    var filterTheater = 'theater';
-    filterResults(filterTheater);
+musicFilter.addEventListener('click', function () {
+    console.log('The queen is gone!')
+    var filterMusic = 'concert';
+    filterResults(filterMusic);
 })
+
