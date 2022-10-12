@@ -157,11 +157,11 @@ function filterResults(buttonClicked){
     for(let i = 0; i < events.eventType.length; i++){
         if(buttonClicked == events.eventType[i]){
             // display event
-
+            console.log(events.eventType[i])
         } else {
             // hide event
-
-        }
+            console.log('filtered out ' + events.eventType[i] );
+        }   
     }
 
 }
@@ -182,13 +182,16 @@ searchBar.addEventListener('keyup', function (event) {
 })
 
 musicFilter.addEventListener('click', function () {
-    
+    var filterMusic = 'concert';
+    filterResults(filterMusic);
 })
 
 sportsFilter.addEventListener('click', function () {
-
+    var filterSports = 'sports';
+    filterResults(filterSports);
 })
 
 theaterFilter.addEventListener('click', function () {
-
+    var filterTheater = 'theater';
+    filterResults(filterTheater);
 })
