@@ -8,18 +8,21 @@
 }
 
 .mapboxgl-popup {
-    max-width: 200px;
-    background-color: aqua;
+    background-color:  rgba(247, 247, 247, 0.971);
     border-radius: 10px;
     margin-left: 5px;
+
 }
 
 .mapboxgl-popup-content {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
-    background-color: aqua;
+    background-color:  rgba(247, 247, 247, 0.971);
     border-radius: 10px;
+
 }
+
+
 
 .mapboxgl-popup-tip {
     display: none;
@@ -46,7 +49,12 @@
   border: 2px solid rgba(247, 247, 247, 0.6);
   border-radius: 5px;
   width: 100%;
-  height: 100%;
+  height: 1000px;
+ }
+ #map::after {
+    padding-bottom: 100%;
+    display: block;
+
  }
 
  #help {
@@ -55,7 +63,7 @@
   border-radius: 30px;
   width: 38px;
   padding: 0px;
-    margin-left: 20px;
+margin-left: 20px;
  }
  #search-bar {
   display: flex;
@@ -87,5 +95,4 @@
 .main-modal {
     background-color: rgba(247, 245, 245, 0.97);
     width: 400px;
-
 }
