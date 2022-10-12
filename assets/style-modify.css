@@ -33,7 +33,9 @@
  .input-field label, #helper {
     color: rgba(77, 71, 71, 0.884);
  }
-
+ #modal2 {
+    display: none;
+ }
 
  #body {
   background-image: url(./images/yvette-de-wit-NYrVisodQ2M-unsplash.jpg);
@@ -53,7 +55,7 @@
   border-radius: 30px;
   width: 38px;
   padding: 0px;
-  /* margin-top: 25px; */
+    margin-left: 20px;
  }
  #search-bar {
   display: flex;
