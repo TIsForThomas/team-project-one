@@ -20,6 +20,7 @@ var events = {
 
 };
 
+var markerFilter = [];
 var centerLat = 30.266;
 var centerLong = -97.7333;
 
@@ -76,7 +77,7 @@ function getEvents(input) {
                 events.performers.push(seatGeekData[i].title);
                 events.date.push(seatGeekData[i].datetime_local);
                 if (seatGeekData[i].stats.highest_price == null) {
-                    events.highPrice.push('SOLD OUT!');
+                    events.highPrice.push(' ');
                     events.lowPrice.push('SOLD OUT');
                 }
                 else {
@@ -147,24 +148,25 @@ function displayEvents() {
                     `
                 )
         ).addTo(map);
+
     }
 }
 
 // function to filter events by theater, music, and sports after receiving results from seatgeek
 function filterResults(buttonClicked){
     // when button is clicked
+    displayEvents();
 
     // iterate through events.eventType for matching event type
     for(let i = 0; i < events.eventType.length; i++){
-        if(buttonClicked == events.eventType[i]){
-            // display event
-            console.log(events.eventType[i])
-        } else {
-            // hide event
-            console.log('filtered out ' + events.eventType[i] );
-        }   
+        if(events.eventType[i] != buttonClicked){
+            // remove display event
+            // console.log(events.eventType[i])  
+            // var eventToRemove = document.querySelector(events.eventType[i]);
+            // console.log(eventToRemove);
+            // eventToRemove.remove()
+        }
     }
-
 }
 
 
