@@ -20,7 +20,11 @@ var events = {
 
 };
 
-var markerFilter = [];
+var markerFilter = {
+    sports: [],
+    concerts: [],
+    theater: [],
+};
 var centerLat = 30.266;
 var centerLong = -97.7333;
 
@@ -148,23 +152,36 @@ function displayEvents() {
                     `
                 )
         ).addTo(map);
-
+        
     }
+    console.log(document.querySelectorAll('#sports'));
+    markerFilter.sports = [];
+    markerFilter.concerts = [];
+    markerFilter.theater = [];
+    markerFilter.sports = document.querySelectorAll('#sports');
+    markerFilter.concerts = document.querySelectorAll('#concert');
+    markerFilter.theater = document.querySelectorAll('#theater');
+    console.log(markerFilter);
 }
 
 // function to filter events by theater, music, and sports after receiving results from seatgeek
 function filterResults(buttonClicked){
     // when button is clicked
-    displayEvents();
-
+    // displayEvents();
+    console.log(buttonClicked);
     // iterate through events.eventType for matching event type
-    for(let i = 0; i < events.eventType.length; i++){
+    for(let i = 0; i < markerFilter[buttonClicked].length; i++){
+        console.log(markerFilter[buttonClicked].length)
         if(events.eventType[i] != buttonClicked){
             // remove display event
-            // console.log(events.eventType[i])  
-            // var eventToRemove = document.querySelector(events.eventType[i]);
-            // console.log(eventToRemove);
-            // eventToRemove.remove()
+            // console.log(markerFilter.sports.length);
+            // markerFilter[events.eventType[i]]
+            // for(let j = 0; j < markerFilter[events.eventType[i]].length; j++){
+                // console.log(markerFilter[events.eventType[i]][j]);
+                // console.log('pls')
+            // }
+            markerFilter[events.eventType[i]][i].style.display = 'none'
+            // console.log(markerFilter[events.eventType[i]][i])
         }
     }
 }
