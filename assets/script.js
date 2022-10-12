@@ -2,6 +2,7 @@ var searchBar = document.querySelector('#location_inline');
 var musicFilter = document.querySelector('#music-btn');
 var sportsFilter = document.querySelector('#sports-btn');
 var theaterFilter = document.querySelector('#theater-btn');
+M.AutoInit();
 
 var seatGeekData;
 var events = {
@@ -32,7 +33,15 @@ var centerLong = -97.7333;
 function getEvents(input) {
     // get user input from variable
     // var input = 'austin'
-    var seatGeekCityAPI = 'https://api.seatgeek.com/2/events?venue.city='+ input + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
+    var currentDate = '';
+    var currentVar = new Date();
+    currentDate = currentDate.concat(currentVar.getUTCFullYear());
+    currentDate = currentDate.concat('-' + currentVar.getUTCMonth());
+    currentDate = currentDate.concat('-' + currentVar.getUTCDay());
+    
+    // console.log(currentDate);
+
+    var seatGeekCityAPI = 'https://api.seatgeek.com/2/events?datetime_utc.gt=' + currentDate + '&venue.city='+ input + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
 
 
   fetch(seatGeekCityAPI)
@@ -43,7 +52,7 @@ function getEvents(input) {
     .then(function (data) {
 
         seatGeekData = data.events;
-        // console.log(seatGeekData)
+        console.log(seatGeekData);
         return seatGeekData;
 
     })
@@ -56,8 +65,14 @@ function getEvents(input) {
             events.website.push(seatGeekData[i].url);
             events.eventType.push(seatGeekData[i].type);
             events.performers.push(seatGeekData[i].title);
-            events.highPrice.push(seatGeekData[i].stats.highest_price);
-            events.lowPrice.push(seatGeekData[i].stats.lowest_price);
+            if (seatGeekData[i].stats.highest_price == null){
+                events.highPrice.push('SOLD OUT!');
+                events.lowPrice.push('SOLD OUT');
+            }
+            else {
+                events.highPrice.push(seatGeekData[i].stats.highest_price);
+                events.lowPrice.push(seatGeekData[i].stats.lowest_price);
+            }
             // console.log(events);
         }
         console.log(events);
@@ -108,6 +123,12 @@ function displayEvents() {
     // // document.querySelector('#map').style.width = '100%';
     // // document.querySelector('#map').style.height = '700px';
 }
+function filterResults(){
+
+}
+
+
+
 
 searchBar.addEventListener('keyup', function(event) {
     

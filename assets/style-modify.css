@@ -82,3 +82,8 @@
 #music-button:hover{
     background-color: rgba(0, 0, 255, 0.305);
 }
+.main-modal {
+    background-color: rgba(247, 245, 245, 0.97);
+    width: 400px;
+
+}
