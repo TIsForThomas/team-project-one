@@ -16,6 +16,7 @@ var events = {
     performers: [],
     lowPrice: [],
     highPrice: [],
+    date: [],
 
 };
 
@@ -23,25 +24,17 @@ var centerLat = 30.266;
 var centerLong = -97.7333;
 
 
-// SeatGeek API
-
-
-
-// var seatGeekAPI = 'https://api.seatgeek.com/2/events?&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc';
-
-
+// seatgeek api request to get events based on location input from user
 function getEvents(input) {
-    // get user input from variable
-    // var input = 'austin'
+    
+    // get current date and format for api
     var currentDate = '';
     var currentVar = new Date();
     currentDate = currentDate.concat(currentVar.getUTCFullYear());
     currentDate = currentDate.concat('-' + currentVar.getUTCMonth());
     currentDate = currentDate.concat('-' + currentVar.getUTCDay());
-    
     // console.log(currentDate);
-
-    var seatGeekCityAPI = 'https://api.seatgeek.com/2/events?datetime_utc.gt=' + currentDate + '&venue.city='+ input + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
+    var seatGeekCityAPI = 'https://api.seatgeek.com/2/events?per_page=50&datetime_utc.gt=' + currentDate + '&venue.city='+ input + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
 
 
   fetch(seatGeekCityAPI)
@@ -63,8 +56,9 @@ function getEvents(input) {
             events.long.push(seatGeekData[i].venue.location.lon);
             events.address.push(seatGeekData[i].venue.address);
             events.website.push(seatGeekData[i].url);
-            events.eventType.push(seatGeekData[i].type);
+            events.eventType.push(seatGeekData[i].taxonomies[0].name);
             events.performers.push(seatGeekData[i].title);
+            events.date.push(seatGeekData[i].datetime_local);
             if (seatGeekData[i].stats.highest_price == null){
                 events.highPrice.push('SOLD OUT!');
                 events.lowPrice.push('SOLD OUT');
@@ -81,6 +75,7 @@ function getEvents(input) {
     })
   }
 
+// display events onto map
 function displayEvents() {
     document.querySelector('#map').style.display = 'flex';
 
@@ -102,8 +97,8 @@ function displayEvents() {
         let lat = events.lat[i];
         let long = events.long[i];
 
-        console.log(lat);
-        console.log(long);
+        // console.log(lat);
+        // console.log(long);
         // create a HTML element for each feature
         const el = document.createElement('div');
         el.className = 'marker';
@@ -123,7 +118,9 @@ function displayEvents() {
     // // document.querySelector('#map').style.width = '100%';
     // // document.querySelector('#map').style.height = '700px';
 }
-function filterResults(){
+
+// function to filter events by theater, music, and sports after receiving results from seatgeek
+function filterResults(input){
 
 }
 
