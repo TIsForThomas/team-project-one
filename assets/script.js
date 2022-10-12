@@ -128,7 +128,7 @@ function displayEvents() {
 
         let lat = events.lat[i];
         let long = events.long[i];
-        
+
         // create a HTML element for each feature
         const el = document.createElement('div');
 
