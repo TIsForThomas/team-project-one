@@ -2584,7 +2584,7 @@ html {
 }
 
 *, *:before, *:after {
-  -webkit-box-sizing: inherit; */
+  -webkit-box-sizing: inherit; 
           box-sizing: inherit;
 }
 
@@ -6297,7 +6297,7 @@ textarea.materialize-textarea.validate + label {
   width: 100%;
 }
 
-/* Validation Sass Placeholders */
+/* Validation Sass Placeholders
 input.valid:not([type]), input.valid:not([type]):focus,
 input.valid[type=text]:not(.browser-default),
 input.valid[type=text]:not(.browser-default):focus,
@@ -6326,9 +6326,9 @@ textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-
   border-bottom: 1px solid #4CAF50;
   -webkit-box-shadow: 0 1px 0 0 #4CAF50;
           box-shadow: 0 1px 0 0 #4CAF50;
-}
+} */
 
-input.invalid:not([type]), input.invalid:not([type]):focus,
+/* input.invalid:not([type]), input.invalid:not([type]):focus,
 input.invalid[type=text]:not(.browser-default),
 input.invalid[type=text]:not(.browser-default):focus,
 input.invalid[type=password]:not(.browser-default),
@@ -6355,9 +6355,8 @@ textarea.materialize-textarea.invalid,
 textarea.materialize-textarea.invalid:focus, .select-wrapper.invalid > input.select-dropdown,
 .select-wrapper.invalid > input.select-dropdown:focus {
   border-bottom: 1px solid #F44336;
-  -webkit-box-shadow: 0 1px 0 0 #F44336;
-          box-shadow: 0 1px 0 0 #F44336;
-}
+
+} */
 
 input:not([type]).valid ~ .helper-text[data-success],
 input:not([type]):focus.valid ~ .helper-text[data-success],

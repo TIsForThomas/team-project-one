@@ -179,6 +179,10 @@ searchBar.addEventListener('keyup', function (event) {
     console.log(event);
     let userInput = document.querySelector('#location_inline').value;
 
+    document.querySelector('#local').textContent = '';
+
+    document.querySelector('#location_inline').style.borderBottom = '1px solid #9e9e9e;';
+
     getEvents(userInput);
 })
 
