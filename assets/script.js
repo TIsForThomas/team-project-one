@@ -138,12 +138,13 @@ function displayEvents() {
         new mapboxgl.Marker(el).setLngLat([long, lat]).setPopup(
                 new mapboxgl.Popup({ offset: 25 }) // add popups
                     .setHTML(
-                    `<h1 id='event-venue'>${events.venue[i]}</h1>
-                    <h3 id='event-date>${events.date}</h3>
-                    <p id='event-address'>${events.address[i]}</p>
-                    <p id='event-performer'>${events.performers[i]}</p>
+                    `
+                    <h4 id='event-performer'>${events.performers[i]}</h4>
+                    <h5 id='event-venue'>${events.venue[i]}</h5>
+                    <h6 id='event-address'>${events.address[i]}</h6>
+                    <a id='event-link' href='${events.website[i]}' target='_blank'>Buy Tickets!</a>
                     <p id='event-price-range'>$${events.lowPrice[i]} - $${events.highPrice[i]}</p>
-                    <a id='event-link' href='${events.website[i]}' target='_blank'>Buy Tickets!</a>`
+                    `
                 )
         ).addTo(map);
     }
