@@ -88,6 +88,8 @@ function getEvents(input) {
             console.log(events);
             if (events.lat.length == 0 && events.long.length == 0) {
                 document.querySelector('#helper').textContent = 'No events found';
+                document.querySelector('#location_inline').removeClass('valid');
+                document.querySelector('#location_inline').addClass('invalid');
                 return
             } else {
                 let lat = 0;
@@ -99,6 +101,7 @@ function getEvents(input) {
                 centerLat = lat / events.lat.length;
                 centerLong = long / events.long.length;
             }
+            document.querySelector('#helper').textContent = `${events.lat.length} events found! Check the map!`;
 
             displayEvents();
         })
@@ -133,14 +136,14 @@ function displayEvents() {
         el.className = 'marker';
         // make a marker for each feature and add to the map
         new mapboxgl.Marker(el).setLngLat([long, lat]).setPopup(
-            new mapboxgl.Popup({ offset: 25 }) // add popups
-                .setHTML(
-                    `<p id='event-type'>${events.eventType[i]}</p>
-                    <h1 id='event-venue'>${events.venue[i]}</h1>
+                new mapboxgl.Popup({ offset: 25 }) // add popups
+                    .setHTML(
+                    `<h1 id='event-venue'>${events.venue[i]}</h1>
+                    <h3 id='event-date>${events.date}</h3>
                     <p id='event-address'>${events.address[i]}</p>
                     <p id='event-performer'>${events.performers[i]}</p>
                     <p id='event-price-range'>$${events.lowPrice[i]} - $${events.highPrice[i]}</p>
-                    <a id='event-link' href='${events.website[i]}' target='_blank'>SeatGeek link</a>`
+                    <a id='event-link' href='${events.website[i]}' target='_blank'>Buy Tickets!</a>`
                 )
         ).addTo(map);
     }
