@@ -63,6 +63,7 @@ function getEvents(input) {
                 performers: [],
                 lowPrice: [],
                 highPrice: [],
+                date: [],
             
             };
             for (let i = 0; i < seatGeekData.length; i++) {
@@ -72,8 +73,8 @@ function getEvents(input) {
                 events.address.push(seatGeekData[i].venue.address);
                 events.website.push(seatGeekData[i].url);
                 events.eventType.push(seatGeekData[i].taxonomies[0].name);
-                events.eventType.push(seatGeekData[i].type);
                 events.performers.push(seatGeekData[i].title);
+                events.date.push(seatGeekData[i].datetime_local);
                 if (seatGeekData[i].stats.highest_price == null) {
                     events.highPrice.push('SOLD OUT!');
                     events.lowPrice.push('SOLD OUT');
