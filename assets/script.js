@@ -101,6 +101,8 @@ function getEvents(input) {
             // console.log(events);
         }
         console.log(events);
+
+        displayEvents();
     })
   }
 
@@ -121,12 +123,12 @@ function displayEvents() {
         new mapboxgl.Marker(el).setLngLat([long, lat]).setPopup(
                 new mapboxgl.Popup({ offset: 25 }) // add popups
                     .setHTML(
-                    `<p>${events.eventType[i]}</p>
-                    <h3>${events.venue[i]}</h3>
-                    <p>${events.address[i]}</p>
-                    <p>${events.performers[i]}</p>
-                    <p>$${events.lowPrice[i]} - $${events.highPrice[i]}</p>
-                    <a href='${events.website[i]}' target='_blank'>SeatGeek link</a>`
+                    `<p id='event-type'>${events.eventType[i]}</p>
+                    <h3 id='event-venue'>${events.venue[i]}</h3>
+                    <p id='event-address'>${events.address[i]}</p>
+                    <p id='event-performer'>${events.performers[i]}</p>
+                    <p id='event-price-range'>$${events.lowPrice[i]} - $${events.highPrice[i]}</p>
+                    <a id='event-link' href='${events.website[i]}' target='_blank'>SeatGeek link</a>`
                     )
                 ).addTo(map);
     }
