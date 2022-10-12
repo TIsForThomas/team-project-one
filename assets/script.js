@@ -149,8 +149,20 @@ function displayEvents() {
 }
 
 // function to filter events by theater, music, and sports after receiving results from seatgeek
-function filterResults(input){
+function filterResults(buttonClicked){
+    // when button is clicked
 
+    // iterate through events.eventType for matching event type
+    for(let i = 0; i < events.eventType.length; i++){
+        if(buttonClicked == events.eventType[i]){
+            // display event
+
+        }
+        else {
+            // hide event
+
+        }
+    }
 
 }
 
