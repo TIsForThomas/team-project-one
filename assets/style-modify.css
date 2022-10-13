@@ -8,7 +8,7 @@
 }
 
 .mapboxgl-popup {
-    background-color:  rgba(247, 247, 247, 0.971);
+    background-color: rgba(247, 247, 247, 0.971);
     border-radius: 10px;
     margin-left: 5px;
 
@@ -17,12 +17,10 @@
 .mapboxgl-popup-content {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
-    background-color:  rgba(247, 247, 247, 0.971);
+    background-color: rgba(247, 247, 247, 0.971);
     border-radius: 10px;
 
 }
-
-
 
 .mapboxgl-popup-tip {
     display: none;
@@ -32,69 +30,79 @@
     border: none;
 }
 
- /* label color */
- .input-field label, #helper {
+.input-field label,
+#helper {
     color: rgba(77, 71, 71, 0.884);
- }
- #modal2 {
+}
+
+#modal2 {
     display: none;
- }
+}
 
- #body {
-  background-image: url(./images/default.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
- }
+#body {
+    background-image: url(./images/default.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
 
- #map {
-  display: none;
-  border: 2px solid rgba(247, 247, 247, 0.6);
-  border-radius: 5px;
-  width: 100%;
-  height: 1000px;
- }
- #map::after {
+#map {
+    display: none;
+    border: 2px solid rgba(247, 247, 247, 0.6);
+    border-radius: 5px;
+    width: 100%;
+    height: 1000px;
+}
+
+#map::after {
     padding-bottom: 100%;
     display: block;
 
- }
+}
 
- #help {
-  font-size: 20px;
-  color: rgba(77, 71, 71, 0.884);
-  border-radius: 30px;
-  width: 38px;
-  padding: 0px;
-margin-left: 20px;
- }
- #search-bar {
-  display: flex;
-  align-items: center;
- }
- #search-1 {
-  background-color: rgba(247, 247, 247, 0.6);
-  padding-bottom: 10px;
-  border-radius: 20px;
- }
- #help {
-  background-color: rgba(247, 247, 247, 0.6);
- }
- #sports-button, #music-button, #theater-button {
-  border: 2px solid rgba(247, 247, 247, 0.6);
-  border-radius: 5px;
-  margin: 5px;
-  /* background-color: rgba(247, 247, 247, 0.6); */
- }
-#theater-button:hover{
+#help {
+    font-size: 20px;
+    color: rgba(77, 71, 71, 0.884);
+    border-radius: 30px;
+    width: 38px;
+    padding: 0px;
+    margin-left: 20px;
+}
+
+#search-bar {
+    display: flex;
+    align-items: center;
+}
+
+#search-1 {
+    background-color: rgba(247, 247, 247, 0.6);
+    padding-bottom: 10px;
+    border-radius: 20px;
+}
+
+#help {
+    background-color: rgba(247, 247, 247, 0.6);
+}
+
+.btn-large {
+    border: 2px solid rgba(247, 247, 247, 0.6);
+    border-radius: 5px;
+    margin: 5px;
+    letter-spacing: .2px;
+}
+
+#theater-button:hover {
     background-color: rgba(255, 0, 0, 0.305);
 }
-#sports-button:hover{
+
+#sports-button:hover {
     background-color: rgba(0, 255, 0, 0.305);
 }
-#music-button:hover{
+
+#music-button:hover {
     background-color: rgba(0, 0, 255, 0.305);
 }
+
 .main-modal {
     background-color: rgba(247, 245, 245, 0.97);
     width: 400px;
