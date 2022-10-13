@@ -211,6 +211,9 @@ theaterFilter.addEventListener('click', function () {
     console.log('ding');
     var filterTheater = 'theater';
     document.body.style.backgroundImage = 'url(assets/images/theater.jpg)'
+    document.querySelector('#theater-button').style.backgroundColor = 'rgba(255, 0, 0, 0.305)'
+    document.querySelector('#sports-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
+    document.querySelector('#music-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
     filterResults(filterTheater);
 })
 
@@ -218,6 +221,9 @@ sportsFilter.addEventListener('click', function () {
     console.log('dong');
     var filterSports = 'sports';
     document.body.style.backgroundImage = 'url(assets/images/sports.jpg)'
+    document.querySelector('#theater-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
+    document.querySelector('#sports-button').style.backgroundColor = 'rgba(0, 255, 0, 0.305)'
+    document.querySelector('#music-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
     filterResults(filterSports);
 })
 
@@ -225,6 +231,9 @@ musicFilter.addEventListener('click', function () {
     console.log('The queen is gone!')
     var filterMusic = 'concert';
     document.body.style.backgroundImage = 'url(assets/images/concert.jpg)'
+    document.querySelector('#theater-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
+    document.querySelector('#sports-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
+    document.querySelector('#music-button').style.backgroundColor = 'rgba(0, 0, 255, 0.305)'
     filterResults(filterMusic);
 })
 
