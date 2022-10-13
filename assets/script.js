@@ -245,36 +245,6 @@ function filterResults(buttonClicked){
 
             displayEvents();
         })
-
-
-
-
-
-
-
-
-
-
-    // when button is clicked
-    // displayEvents();
-    // console.log(buttonClicked);
-    // // iterate through events.eventType for matching event type
-
-    // for(let i = 0; i < Object.keys(markerFilter).length; i++) {
-    //     if(Object.keys(markerFilter)[i] != buttonClicked){
-    //         var testy = Object.keys(markerFilter)[i];
-    //         for(let j = 0; j < markerFilter[testy].length; j++){
-    //             console.log(markerFilter[testy][j]);
-    //             // hide display
-    //             // markerFilter[testy][j].remove;
-    //             // marker.remove();
-    //             var fuck = markerFilter[testy][j]
-    //             fuck.style.opacity = 0;
-    //             console.log()
-    //             console.log(Object.values(fuck));
-    //         }
-    //     }
-    // }
 }
 
 searchBar.addEventListener('keyup', function (event) {
