@@ -138,22 +138,24 @@ function displayEvents() {
         const el = document.createElement('div');
 
         el.setAttribute('id', events.eventType[i])
+
+        
         el.className = 'marker';
         // make a marker for each feature and add to the map
         new mapboxgl.Marker(el).setLngLat([long, lat]).setPopup(
-                new mapboxgl.Popup({ offset: 25 }) // add popups
-                    .setHTML(
-                    `
-                    <h4 id='event-performer'>${events.performers[i]}</h4>
-                    <h5 id='event-venue'>${events.venue[i]}</h5>
-                    <h6 id='event-address'>${events.address[i]}</h6>
-                    <a id='event-link' href='${events.website[i]}' target='_blank'>Buy Tickets!</a>
-                    <p id='event-price-range'>$${events.lowPrice[i]} - $${events.highPrice[i]}</p>
-                    `
+            new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(
+                `
+                <h4 id='event-performer'>${events.performers[i]}</h4>
+                <h5 id='event-venue'>${events.venue[i]}</h5>
+                <h6 id='event-address'>${events.address[i]}</h6>
+                <a id='event-link' href='${events.website[i]}' target='_blank'>Buy Tickets!</a>
+                <p id='event-price-range'>$${events.lowPrice[i]} - $${events.highPrice[i]}</p>
+                `
                 )
-        ).addTo(map);
-        
-    }
+                ).addTo(map);
+            }
+            
     console.log(document.querySelectorAll('#sports'));
     markerFilter.sports = [];
     markerFilter.concerts = [];
@@ -208,18 +210,21 @@ searchBar.addEventListener('keyup', function (event) {
 theaterFilter.addEventListener('click', function () {
     console.log('ding');
     var filterTheater = 'theater';
+    document.body.style.backgroundImage = 'url(assets/images/theater.jpg)'
     filterResults(filterTheater);
 })
 
 sportsFilter.addEventListener('click', function () {
     console.log('dong');
     var filterSports = 'sports';
+    document.body.style.backgroundImage = 'url(assets/images/sports.jpg)'
     filterResults(filterSports);
 })
 
 musicFilter.addEventListener('click', function () {
     console.log('The queen is gone!')
     var filterMusic = 'concert';
+    document.body.style.backgroundImage = 'url(assets/images/concert.jpg)'
     filterResults(filterMusic);
 })
 
