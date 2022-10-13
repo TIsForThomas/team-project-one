@@ -15,7 +15,7 @@ For this first team project, we were tasked with creating a website that utilize
 
 - First, type a city name into the search bar at the top of the webpage and press enter. This will populate the map with all of the events in that city ![Search Bar](/assets/Screenshots/search-bar.png)
 
-- Then, use the buttons to narrow down your search to the event type (currently there are 3 with room for more in future builds) ![Buttons](/assets/Screenshots/buttons.png)
+- Then, use the buttons to narrow down your search to the event type ![Buttons](/assets/Screenshots/buttons.png)
 
 - Last, click through the cards to see the event information to decide what you want to go see! We even included a link to SeatGeek so you can buy tickets! ![Search Bar](/assets/Screenshots/populated-map.png)
 
