@@ -176,8 +176,9 @@ function filterResults(buttonClicked){
     currentDate = currentDate.concat(currentVar.getUTCFullYear());
     currentDate = currentDate.concat('-' + currentVar.getUTCMonth());
     currentDate = currentDate.concat('-' + currentVar.getUTCDay());
+    let userInput = document.querySelector('#location_inline').value;
 
-    var seatGeekEventsAPI = 'https://api.seatgeek.com/2/events?per_page=25&datetime_utc.gt=' + currentDate + '&taxonomies.name=' + buttonClicked + '&venue.city=austin&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
+    var seatGeekEventsAPI = 'https://api.seatgeek.com/2/events?per_page=50&datetime_utc.gt=' + currentDate + '&taxonomies.name=' + buttonClicked + '&venue.city=' + userInput + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
 
     fetch(seatGeekEventsAPI)
         .then(function (response) {
