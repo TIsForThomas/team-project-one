@@ -172,6 +172,7 @@ function displayEvents() {
 // function to filter events by theater, music, and sports after receiving results from seatgeek
 function filterResults(buttonClicked){
 
+    document.querySelector('#local').textContent = '';
     // CLEAR CURRENT MAP MARKERS?
 
     var currentDate = '';
@@ -250,10 +251,12 @@ function filterResults(buttonClicked){
 }
 
 function init() {
+
     var recentLocation = localStorage.getItem('last-location')
     if(recentLocation === null){
         return;
     }
+    document.querySelector('#local').textContent = '';
     searchBar.value += recentLocation;
 
     getEvents(recentLocation);
@@ -290,7 +293,7 @@ theaterFilter.addEventListener('click', function () {
     document.querySelector('#theater-button').style.backgroundColor = 'rgba(255, 0, 0, 0.305)';
     document.querySelector('#sports-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)';
     document.querySelector('#music-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)';
-        filterResults(filterTheater);
+    filterResults(filterTheater);
 })
 
 sportsFilter.addEventListener('click', function () {
