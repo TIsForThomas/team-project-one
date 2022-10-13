@@ -19,10 +19,10 @@ var events = {
     date: [],
 
 };
-
+// var test = 'sports';
 var markerFilter = {
     sports: [],
-    concerts: [],
+    concert: [],
     theater: [],
 };
 var centerLat = 30.266;
@@ -158,10 +158,10 @@ function displayEvents() {
             
     console.log(document.querySelectorAll('#sports'));
     markerFilter.sports = [];
-    markerFilter.concerts = [];
+    markerFilter.concert = [];
     markerFilter.theater = [];
     markerFilter.sports = document.querySelectorAll('#sports');
-    markerFilter.concerts = document.querySelectorAll('#concert');
+    markerFilter.concert = document.querySelectorAll('#concert');
     markerFilter.theater = document.querySelectorAll('#theater');
     console.log(markerFilter);
 }
@@ -172,18 +172,16 @@ function filterResults(buttonClicked){
     // displayEvents();
     console.log(buttonClicked);
     // iterate through events.eventType for matching event type
-    for(let i = 0; i < markerFilter[buttonClicked].length; i++){
-        console.log(markerFilter[buttonClicked].length)
-        if(events.eventType[i] != buttonClicked){
-            // remove display event
-            // console.log(markerFilter.sports.length);
-            // markerFilter[events.eventType[i]]
-            // for(let j = 0; j < markerFilter[events.eventType[i]].length; j++){
-                // console.log(markerFilter[events.eventType[i]][j]);
-                // console.log('pls')
-            // }
-            markerFilter[events.eventType[i]][i].style.display = 'none'
-            // console.log(markerFilter[events.eventType[i]][i])
+
+    for(let i = 0; i < Object.keys(markerFilter).length; i++) {
+        if(Object.keys(markerFilter)[i] != buttonClicked){
+            var testy = Object.keys(markerFilter)[i];
+            for(let j = 0; j < markerFilter[testy].length; j++){
+                console.log(markerFilter[testy][j]);
+                // hide display
+                markerFilter[testy][j].remove;
+                marker.remove();
+            }
         }
     }
 }
@@ -197,7 +195,7 @@ searchBar.addEventListener('keyup', function (event) {
         return;
     }
 
-    console.log(event);
+    // console.log(event);
     let userInput = document.querySelector('#location_inline').value;
 
     document.querySelector('#local').textContent = '';
