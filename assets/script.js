@@ -2,7 +2,11 @@ var searchBar = document.querySelector('#location_inline');
 var musicFilter = document.querySelector('#music-button');
 var sportsFilter = document.querySelector('#sports-button');
 var theaterFilter = document.querySelector('#theater-button');
+var locationPlaceholder = document.querySelector('#local');
+
 M.AutoInit();
+
+init();
 
 var seatGeekData;
 var events = {
@@ -137,8 +141,7 @@ function displayEvents() {
         // create a HTML element for each feature
         const el = document.createElement('div');
 
-        el.setAttribute('id', events.eventType[i])
-
+        el.setAttribute('id', events.eventType[i]);
         
         el.className = 'marker';
         // make a marker for each feature and add to the map
@@ -178,7 +181,7 @@ function filterResults(buttonClicked){
     currentDate = currentDate.concat('-' + currentVar.getUTCDay());
     let userInput = document.querySelector('#location_inline').value;
 
-    var seatGeekEventsAPI = 'https://api.seatgeek.com/2/events?per_page=50&datetime_utc.gt=' + currentDate + '&taxonomies.name=' + buttonClicked + '&venue.city=' + userInput + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
+    var seatGeekEventsAPI = 'https://api.seatgeek.com/2/events?datetime_utc.gt=' + currentDate + '&taxonomies.name=' + buttonClicked + '&venue.city=' + userInput + '&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
 
     fetch(seatGeekEventsAPI)
         .then(function (response) {
@@ -229,8 +232,6 @@ function filterResults(buttonClicked){
             console.log(events);
             if (events.lat.length == 0 && events.long.length == 0) {
                 document.querySelector('#helper').textContent = 'No events found';
-                document.querySelector('#location_inline').removeClass('valid');
-                document.querySelector('#location_inline').addClass('invalid');
                 return
             } else {
                 let lat = 0;
@@ -248,6 +249,16 @@ function filterResults(buttonClicked){
         })
 }
 
+function init() {
+    var recentLocation = localStorage.getItem('last-location')
+    if(recentLocation === null){
+        return;
+    }
+    searchBar.value += recentLocation;
+
+    getEvents(recentLocation);
+}
+
 searchBar.addEventListener('keyup', function (event) {
 
     if (event.key !== 'Enter') {
@@ -256,6 +267,8 @@ searchBar.addEventListener('keyup', function (event) {
 
     // console.log(event);
     let userInput = document.querySelector('#location_inline').value;
+
+    localStorage.setItem('last-location', userInput);
 
     document.querySelector('#local').textContent = '';
 
@@ -267,30 +280,30 @@ searchBar.addEventListener('keyup', function (event) {
 theaterFilter.addEventListener('click', function () {
     console.log('ding');
     var filterTheater = 'theater';
-    document.body.style.backgroundImage = 'url(assets/images/theater.jpg)'
-    document.querySelector('#theater-button').style.backgroundColor = 'rgba(255, 0, 0, 0.305)'
-    document.querySelector('#sports-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
-    document.querySelector('#music-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
-    filterResults(filterTheater);
+    document.body.style.backgroundImage = 'url(assets/images/theater.jpg)';
+    document.querySelector('#theater-button').style.backgroundColor = 'rgba(255, 0, 0, 0.305)';
+    document.querySelector('#sports-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)';
+    document.querySelector('#music-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)';
+        filterResults(filterTheater);
 })
 
 sportsFilter.addEventListener('click', function () {
     console.log('dong');
     var filterSports = 'sports';
-    document.body.style.backgroundImage = 'url(assets/images/sports.jpg)'
-    document.querySelector('#theater-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
-    document.querySelector('#sports-button').style.backgroundColor = 'rgba(0, 255, 0, 0.305)'
-    document.querySelector('#music-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
+    document.body.style.backgroundImage = 'url(assets/images/sports.jpg)';
+    document.querySelector('#theater-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)';
+    document.querySelector('#sports-button').style.backgroundColor = 'rgba(0, 255, 0, 0.305)';
+    document.querySelector('#music-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)';
     filterResults(filterSports);
 })
 
 musicFilter.addEventListener('click', function () {
-    console.log('The queen is gone!')
+    console.log('The queen is gone!');
     var filterMusic = 'concert';
-    document.body.style.backgroundImage = 'url(assets/images/concert.jpg)'
-    document.querySelector('#theater-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
-    document.querySelector('#sports-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)'
-    document.querySelector('#music-button').style.backgroundColor = 'rgba(0, 0, 255, 0.305)'
+    document.body.style.backgroundImage = 'url(assets/images/concert.jpg)';
+    document.querySelector('#theater-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)';
+    document.querySelector('#sports-button').style.backgroundColor = 'rgba(247, 247, 247, 0.6)';
+    document.querySelector('#music-button').style.backgroundColor = 'rgba(0, 0, 255, 0.305)';
     filterResults(filterMusic);
 })
 
