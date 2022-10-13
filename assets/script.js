@@ -3,9 +3,9 @@ var musicFilter = document.querySelector('#music-button');
 var sportsFilter = document.querySelector('#sports-button');
 var theaterFilter = document.querySelector('#theater-button');
 var locationPlaceholder = document.querySelector('#local');
+var searchContainer = document.querySelector('#search-1');
 
 M.AutoInit();
-
 init();
 
 var seatGeekData;
@@ -259,6 +259,12 @@ function init() {
     getEvents(recentLocation);
 }
 
+function selectText() {
+    const input = searchBar;
+    input.focus();
+    input.select();
+}
+
 searchBar.addEventListener('keyup', function (event) {
 
     if (event.key !== 'Enter') {
@@ -307,3 +313,5 @@ musicFilter.addEventListener('click', function () {
     filterResults(filterMusic);
 })
 
+
+searchContainer.addEventListener('click', selectText);
