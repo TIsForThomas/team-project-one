@@ -168,26 +168,114 @@ function displayEvents() {
 
 // function to filter events by theater, music, and sports after receiving results from seatgeek
 function filterResults(buttonClicked){
+
+    // CLEAR CURRENT MAP MARKERS?
+
+    var currentDate = '';
+    var currentVar = new Date();
+    currentDate = currentDate.concat(currentVar.getUTCFullYear());
+    currentDate = currentDate.concat('-' + currentVar.getUTCMonth());
+    currentDate = currentDate.concat('-' + currentVar.getUTCDay());
+
+    var seatGeekEventsAPI = 'https://api.seatgeek.com/2/events?per_page=25&datetime_utc.gt=' + currentDate + '&taxonomies.name=' + buttonClicked + '&venue.city=austin&client_id=MTEzMTA3Njd8MTY2NTE3MDU2OC42ODE5NTc'
+
+    fetch(seatGeekEventsAPI)
+        .then(function (response) {
+            // console.log(response);
+            return response.json();
+        })
+        .then(function (data) {
+
+            seatGeekData = data.events;
+            console.log(seatGeekData);
+            return seatGeekData;
+
+        })
+        .then(function () {
+            events = {
+
+                venue: [],
+                lat: [],
+                long: [],
+                address: [],
+                website: [],
+                eventType: [],
+                performers: [],
+                lowPrice: [],
+                highPrice: [],
+                date: [],
+            
+            };
+            for (let i = 0; i < seatGeekData.length; i++) {
+                events.venue.push(seatGeekData[i].venue.name);
+                events.lat.push(seatGeekData[i].venue.location.lat);
+                events.long.push(seatGeekData[i].venue.location.lon);
+                events.address.push(seatGeekData[i].venue.address);
+                events.website.push(seatGeekData[i].url);
+                events.eventType.push(seatGeekData[i].taxonomies[0].name);
+                events.performers.push(seatGeekData[i].title);
+                events.date.push(seatGeekData[i].datetime_local);
+                if (seatGeekData[i].stats.highest_price == null) {
+                    events.highPrice.push(' ');
+                    events.lowPrice.push('SOLD OUT');
+                }
+                else {
+                    events.highPrice.push(seatGeekData[i].stats.highest_price);
+                    events.lowPrice.push(seatGeekData[i].stats.lowest_price);
+                }
+                // console.log(events);
+            }
+            console.log(events);
+            if (events.lat.length == 0 && events.long.length == 0) {
+                document.querySelector('#helper').textContent = 'No events found';
+                document.querySelector('#location_inline').removeClass('valid');
+                document.querySelector('#location_inline').addClass('invalid');
+                return
+            } else {
+                let lat = 0;
+                let long = 0;
+                for (var i = 0; i < events.lat.length; i++) {
+                    lat += events.lat[i];
+                    long += events.long[i];
+                }
+                centerLat = lat / events.lat.length;
+                centerLong = long / events.long.length;
+            }
+            document.querySelector('#helper').textContent = `${events.lat.length} events found! Check the map!`;
+
+            displayEvents();
+        })
+
+
+
+
+
+
+
+
+
+
     // when button is clicked
     // displayEvents();
-    console.log(buttonClicked);
-    // iterate through events.eventType for matching event type
+    // console.log(buttonClicked);
+    // // iterate through events.eventType for matching event type
 
-    for(let i = 0; i < Object.keys(markerFilter).length; i++) {
-        if(Object.keys(markerFilter)[i] != buttonClicked){
-            var testy = Object.keys(markerFilter)[i];
-            for(let j = 0; j < markerFilter[testy].length; j++){
-                console.log(markerFilter[testy][j]);
-                // hide display
-                markerFilter[testy][j].remove;
-                marker.remove();
-            }
-        }
-    }
+    // for(let i = 0; i < Object.keys(markerFilter).length; i++) {
+    //     if(Object.keys(markerFilter)[i] != buttonClicked){
+    //         var testy = Object.keys(markerFilter)[i];
+    //         for(let j = 0; j < markerFilter[testy].length; j++){
+    //             console.log(markerFilter[testy][j]);
+    //             // hide display
+    //             // markerFilter[testy][j].remove;
+    //             // marker.remove();
+    //             var fuck = markerFilter[testy][j]
+    //             fuck.style.opacity = 0;
+    //             console.log()
+    //             console.log(Object.values(fuck));
+    //         }
+    //     }
+    // }
 }
-
-
-
 
 searchBar.addEventListener('keyup', function (event) {
 
